@@ -1,0 +1,13 @@
+Package: wxy
+Title: R Bindings for 'wxylib'
+Version: 0.0.0.9000
+Authors@R: person("Michael", "Sumner", email = "mdsumner@gmail.com",
+    role = c("aut", "cre"))
+Description: A minimal spike of R bindings to the 'wxylib' Rust crates:
+    test whether a coordinate vector is regular, build a geotransform
+    from an extent and dimension, and warp a matrix to a grid in another
+    coordinate reference system, all in pure Rust.
+License: Apache License (== 2.0) | MIT + file LICENSE
+SystemRequirements: Cargo (Rust's package manager), rustc
+URL: https://github.com/wxylib/r
+BugReports: https://github.com/wxylib/r/issues
