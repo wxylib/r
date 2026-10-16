@@ -1,0 +1,4 @@
+useDynLib(wxy, .registration = TRUE)
+export(wxy_affine)
+export(wxy_regular)
+export(wxy_warp)

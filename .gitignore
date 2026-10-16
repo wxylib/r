@@ -1,0 +1,6 @@
+src/rust/target
+src/*.o
+src/*.so
+src/*.dll
+*.tar.gz
+wxy.Rcheck
