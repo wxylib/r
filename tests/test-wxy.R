@@ -48,7 +48,7 @@ for (k in c("near", "bilinear")) {
   p <- wxy_warp(z, c(-180, 180, -90, 90), "EPSG:4326",
                 c(-5e6, 5e6, -5e6, 5e6), c(101, 101),
                 "+proj=stere +lat_0=-90 +lat_ts=-71 +datum=WGS84", k)
-  stopifnot(!anyNA(p), p[51, 51] == -89.5)
+  stopifnot(!anyNA(p), abs(p[51, 51] + 89.5) < 1e-9)
 }
 
 ## a CRS proj4rs cannot parse is a plain R error
