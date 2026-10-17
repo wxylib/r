@@ -41,13 +41,15 @@ p <- wxy_warp(z, c(-180, 180, -90, 90), "EPSG:4326",
 stopifnot(dim(p) == c(100, 100), all(p[50:51, 50:51] == -89.5), !anyNA(p))
 
 ## an odd size puts a column of cell centres on the antimeridian (lon 180,
-## just past the source edge); a global source wraps, so the column is
-## filled. (The one cell exactly on the pole, lat -90, is still NaN with
-## nearest: it sits on the bottom edge of the source, a latitude question.)
-p <- wxy_warp(z, c(-180, 180, -90, 90), "EPSG:4326",
-              c(-5e6, 5e6, -5e6, 5e6), c(101, 101),
-              "+proj=stere +lat_0=-90 +lat_ts=-71 +datum=WGS84")
-stopifnot(!anyNA(p[52:101, 51]), sum(is.na(p)) <= 1)
+## just past the source edge) and one cell exactly on the pole; a global
+## source wraps in longitude and reads the edge row at the pole, so no cell
+## is missing, with either kernel
+for (k in c("near", "bilinear")) {
+  p <- wxy_warp(z, c(-180, 180, -90, 90), "EPSG:4326",
+                c(-5e6, 5e6, -5e6, 5e6), c(101, 101),
+                "+proj=stere +lat_0=-90 +lat_ts=-71 +datum=WGS84", k)
+  stopifnot(!anyNA(p), p[51, 51] == -89.5)
+}
 
 ## a CRS proj4rs cannot parse is a plain R error
 e <- try(wxy_warp(m, c(0, 2, 0, 2), "EPSG:4326", c(0, 2, 0, 2), c(2, 2),
