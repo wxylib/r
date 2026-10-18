@@ -56,6 +56,7 @@ commit, so the bindings move only when that pin moves.
 - Generated wrappers and docs (`rextendr::document()`, roxygen2); they are
   written by hand here to keep the spike dependency free.
 
-Design and roadmap: [wxylib/design](https://github.com/wxylib/design).
+Documentation: **https://wxylib.github.io/docs/**, one place for what works, how-tos,
+explainers, the design documents and how to help.
 
 License: MIT OR Apache-2.0.
