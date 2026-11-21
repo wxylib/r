@@ -2,6 +2,14 @@
 
 R package `wxy`: R bindings for wxylib, via [extendr](https://extendr.github.io).
 
+> **Status: parked (2026-11-21).** An R surface is not a goal of wxylib
+> for now ([commit criteria](https://github.com/wxylib/design/blob/main/docs/commit-criteria.md),
+> criterion 3). To warp in memory from R, use the
+> [rwarp](https://github.com/hypertidy/rwarp) R package; to read
+> byte-reference tables from R, use GDAL or
+> [zaro](https://github.com/hypertidy/zaro). This package stays as a
+> working spike and follows wxylib/core by pin.
+
 This is a minimal spike. It binds three functions from
 [wxylib/core](https://github.com/wxylib/core), chosen because they are pure
 Rust: no I/O, no C libraries, and CRS work through the `proj4rs` backend
